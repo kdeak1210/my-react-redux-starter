@@ -43,6 +43,8 @@ app.engine('handlebars', exphbs({ fefaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // Routes
+app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/api'));
 
 // Listen on PORT (env var OR 3000 if none)
 const port = process.env.PORT || 3000;
