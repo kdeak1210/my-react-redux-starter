@@ -1,13 +1,14 @@
 {
   "name": "my-react-redux-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "My starter template for React/Redux projects with Node/Express backend and MongoDB",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kyle Deak",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,7 +23,10 @@
     "morgan": "^1.9.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
