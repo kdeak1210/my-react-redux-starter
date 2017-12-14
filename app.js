@@ -39,7 +39,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Handlebars Templating Engine
-app.engine('handlebars', exphbs({ fefaultLayout: 'main'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // Routes
