@@ -1,41 +1,25 @@
 import React, { Component } from 'react';
 import { Preview } from '../presentation';
 import { APIManager } from '../../utils';
+import { connect } from 'react-redux';
+import actions from '../../actions';
 
 class Feed extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-      users: [ ]
-    };
-  }
-
   componentDidMount(){
     console.log('CDM - FEED');
-    APIManager.get('/api/profile', null)
-    .then(response => {
-      console.log('GET: ' + JSON.stringify(response));
-      let updated = Object.assign({}, this.state.users);
-      updated = response.results;
-      this.setState({
-        users: updated
-      })
-    })
-    .catch(err => {
-      alert(err);
-    });
+    this.props.fetchProfiles();
   }
 
   render(){
 
-    const { users } = this.state;
+    const profiles = this.props.profile.all || [];
 
     return(
       <div>
         <h4>FEED (list of profiles)</h4>
         <ul style={{listStyle: 'none'}}>
-        { users.map((user, i) => {
+        { profiles.map((user, i) => {
           return (
             <li key={i}>
               <Preview username={user.username} email={user.email} timestamp={user.timestamp} />
@@ -48,4 +32,16 @@ class Feed extends Component {
   }
 }
 
-export default Feed;
+const stateToProps = (state) => {
+  return {
+    profile: state.profile
+  }
+}
+
+const dispatchToProps = (dispatch) => {
+  return {
+    fetchProfiles: () => dispatch(actions.fetchProfiles())
+  }
+}
+
+export default connect(stateToProps, dispatchToProps)(Feed);
