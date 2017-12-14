@@ -52,7 +52,9 @@ module.exports = {
     return new Promise((resolve, reject) => {
 
       // Salt the password property with bcrypt
-      params['password'] = bcrypt.genSalt(params['password'], 10)
+      if (params['password']){
+        params['password'] = bcrypt.hashSync(params.password, 10)
+      }
 
       Profile.create(params, (err, profile) => {
         if (err){
