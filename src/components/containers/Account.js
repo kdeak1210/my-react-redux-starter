@@ -23,17 +23,24 @@ class Account extends Component {
     this.props.login(credentials);
   }
 
+  logout(){
+    console.log('Logout!');
+    this.props.logout();
+  }
+
   render(){
-    console.log(JSON.stringify(this.props.user))
     return(
       <div>
         { (this.props.user == null) 
           ? [
-            <Register key={'register'} onRegister={this.register.bind(this)}/>,
-            <Login key={'login'} onLogin={this.login.bind(this)}/>            
+            <Register key='register' onRegister={this.register.bind(this)}/>,
+            <Login key='login' onLogin={this.login.bind(this)}/>            
           ]
           
-          : <h3>Hello {this.props.user.username}</h3>
+          : [
+            <h3 key='greeting'>Hello {this.props.user.username}!</h3>,
+            <button key='logout' onClick={this.logout.bind(this)}>Logout</button>
+          ]
         
         }
         
@@ -50,9 +57,10 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
   return {
-    register: (credentials) => dispatch(actions.register(credentials)),
+    checkCurrentUser: () => dispatch(actions.checkCurrentUser()),
     login: (credentials) => dispatch(actions.login(credentials)),
-    checkCurrentUser: () => dispatch(actions.checkCurrentUser())
+    logout: () => dispatch(actions.logout()),
+    register: (credentials) => dispatch(actions.register(credentials))
   }
 }
 
