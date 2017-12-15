@@ -46,6 +46,11 @@ app.set('view engine', 'handlebars');
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/api'));
 
+// Catch-All route renders the React App for Front-End routing to take over
+app.get('*', (req, res) => {
+  res.render('index', null);
+});
+
 // Listen on PORT (env var OR 3000 if none)
 const port = process.env.PORT || 3000;
 app.listen(port, (err) => {
