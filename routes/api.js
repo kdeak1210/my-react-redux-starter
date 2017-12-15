@@ -77,7 +77,7 @@ router.post('/:resource', (req, res) => {
     return;
   }
 
-  controller.create(req.body)
+  controller.create(req.body, false)
   .then(result => {
     res.json({
       confirmation: 'success',
@@ -93,7 +93,32 @@ router.post('/:resource', (req, res) => {
 });
 
 router.put('/:resource/:id', (req, res) => {
-  res.send('not implemented');
+  
+  const { resource, id } = req.params;
+  const controller = controllers[resource];
+
+  if (controller == null) {
+    res.json({
+      confirmation: 'fail',
+      message: `Resource '${resource}' is not found`
+    });
+
+    return;
+  }
+
+  controller.update(id, req.body, false)
+  .then(result => {
+    res.json({
+      confirmation: 'success',
+      result: result
+    });
+  })
+  .catch(err => {
+    res.json({
+      confirmation: 'fail',
+      message: err
+    });
+  });
 });
 
 router.delete('/:resource/:id', (req, res) => {

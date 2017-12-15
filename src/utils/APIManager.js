@@ -45,6 +45,24 @@ export default {
         resolve(response.body);
       });
     });
+  },
+
+  put: (url, params) => {
+    return new Promise((resolve, reject) => {
+
+      superagent
+      .put(url)
+      .send(params)
+      .set('accept', 'json')
+      .end((err, response) => {
+        if (err){
+          reject(err);
+          return;
+        }
+
+        resolve(response.body);
+      })
+    })
   }
 
 }

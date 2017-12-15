@@ -72,6 +72,23 @@ export default {
     return (dispatch) => {
       return dispatch(getRequest('/account/logout', null, constants.USER_LOGGED_OUT));
     }
+  },
+
+  updateProfile: (profile, updated) => {
+    return (dispatch) => {
+      APIManager.put(`/api/profile/${profile._id}`, updated)
+      .then(response => {
+        const payload = response.result
+        console.log('Profile Updated: ' + JSON.stringify(payload));
+        dispatch({
+          type: constants.PROFILE_UPDATED,
+          payload: payload
+        });    
+      })
+      .catch(err => {
+        alert('ERROR: ' + JSON.stringify(err));
+      })
+    }
   }
 
 }

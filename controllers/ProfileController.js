@@ -74,7 +74,22 @@ module.exports = {
   },
 
   update: (id, params, isRaw) => {
-    // UPDATE (PUT)
+    return new Promise((resolve, reject) => {
+      Profile.findByIdAndUpdate(id, params, {new: true}, (err, profile) => {
+        if (err){
+          reject(err);
+          return;
+        }
+
+        if (isRaw){
+          resolve(profile);
+          return;
+        } else {
+          resolve(profile.summary());
+          return;
+        }
+      });
+    });
   },
 
   destroy: (id, isRaw) => {
