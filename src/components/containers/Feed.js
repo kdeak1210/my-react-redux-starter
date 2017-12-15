@@ -21,7 +21,7 @@ class Feed extends Component {
         <ul style={{listStyle: 'none', paddingLeft: '0px'}}>
         { profiles.map((user, i) => {
           return (
-            <li key={i}>
+            <li key={user.id}>
               <Preview username={user.username} email={user.email} timestamp={user.timestamp} />
             </li>
           )
