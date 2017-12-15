@@ -48,6 +48,24 @@ export default {
     return (dispatch) => {
       return dispatch(getRequest('/api/profile', null, constants.PROFILES_RECEIVED));
     }
+  },
+
+  checkCurrentUser: () => {
+    return (dispatch) => {
+      return dispatch(getRequest('/account/currentuser', null, constants.USER_LOGGED_IN))
+    }
+  },
+
+  register: (credentials) => {
+    return (dispatch) => {
+      return dispatch(postRequest('/account/register', credentials, constants.PROFILE_CREATED));
+    }
+  },
+
+  login: (credentials) => {
+    return (dispatch) => {
+      return dispatch(postRequest('/account/login', credentials, constants.USER_LOGGED_IN));
+    }
   }
 
 }

@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { profileReducer } from '../reducers';
+import { accountReducer, profileReducer } from '../reducers';
 
 var store;
 
@@ -9,6 +9,7 @@ export default {
   configureStore: () => {
 
     const reducers = combineReducers({
+      account: accountReducer,
       profile: profileReducer
     });
 
