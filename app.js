@@ -1,6 +1,6 @@
 /**Express app config.
  * Remember to set environment variables in .env!!!
- * Required: PORT, MONGO_URL, SESSION_SECRET
+ * Required: PORT, MONGO_URL, SESSION_SECRET, TOKEN_SECRET (account route)
  */
 
 const express = require('express');
@@ -45,6 +45,7 @@ app.set('view engine', 'handlebars');
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/api'));
+app.use('/account', require('./routes/account'));
 
 // Catch-All route renders the React App for Front-End routing to take over
 app.get('*', (req, res) => {
