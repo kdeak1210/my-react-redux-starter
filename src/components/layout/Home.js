@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Feed } from '../containers';
+import { Account, Feed } from '../containers';
 
 class Home extends Component {
   render(){
     return(
-      <div>
+      <div className="container">
         <h1>HOME LAYOUT</h1>
 
         <div className="row">
@@ -12,7 +12,7 @@ class Home extends Component {
             <Feed />
           </div>
           <div className="col-md-6">
-            SIGNUP/LOGIN
+            <Account />
           </div>
         </div>
       </div>

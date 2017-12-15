@@ -18,7 +18,7 @@ class Feed extends Component {
     return(
       <div>
         <h4>FEED (list of profiles)</h4>
-        <ul style={{listStyle: 'none'}}>
+        <ul style={{listStyle: 'none', paddingLeft: '0px'}}>
         { profiles.map((user, i) => {
           return (
             <li key={i}>

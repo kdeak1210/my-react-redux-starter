@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Preview extends Component {
   render(){
     return(
-      <div style={{border: '1px solid black', margin: '10px 0', paddingLeft: '10px'}}>
+      <div style={{background: '#f9f9f9', border: '1px solid black', margin: '10px 0', paddingLeft: '10px'}}>
         <h4>Username: 
           <Link to={`/profile/${this.props.username}`}>
             {this.props.username}
