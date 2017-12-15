@@ -76,7 +76,7 @@ export default {
 
   updateProfile: (profile, updated) => {
     return (dispatch) => {
-      APIManager.put(`/api/profile/${profile._id}`, updated)
+      APIManager.put(`/api/profile/${profile.id}`, updated)
       .then(response => {
         const payload = response.result
         console.log('Profile Updated: ' + JSON.stringify(payload));
@@ -86,7 +86,7 @@ export default {
         });    
       })
       .catch(err => {
-        alert('ERROR: ' + JSON.stringify(err));
+        alert(err);
       })
     }
   }

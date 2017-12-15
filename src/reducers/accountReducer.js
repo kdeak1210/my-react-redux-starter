@@ -14,6 +14,10 @@ export default (state = initialState, action) => {
       updated['user'] = action.payload;
       return updated;
 
+    case constants.PROFILE_UPDATED:
+      console.log('PROFILE_UPDATED: ' + JSON.stringify(action.payload));
+      return updated;
+
     case constants.USER_LOGGED_IN:
       console.log('USER_LOGGED_IN: ' + JSON.stringify(action.payload));
       updated['user'] = action.payload;
