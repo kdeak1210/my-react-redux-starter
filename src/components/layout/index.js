@@ -1,10 +1,10 @@
-import Admin from './Admin';
+import CurrentUser from './CurrentUser';
 import Home from './Home';
 import ProfileInfo from './ProfileInfo';
 
 export {
 
-  Admin,
+  CurrentUser,
   Home,
   ProfileInfo
 

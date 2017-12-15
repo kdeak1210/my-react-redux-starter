@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Register, Login } from '../presentation';
+import { Greeting, Login, Register } from '../presentation';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 
@@ -29,21 +29,17 @@ class Account extends Component {
   }
 
   render(){
+    const { user } = this.props;
+
     return(
       <div>
-        { (this.props.user == null) 
+        { (user == null)
           ? [
             <Register key='register' onRegister={this.register.bind(this)}/>,
             <Login key='login' onLogin={this.login.bind(this)}/>            
           ]
-          
-          : [
-            <h3 key='greeting'>Hello {this.props.user.username}!</h3>,
-            <button key='logout' onClick={this.logout.bind(this)}>Logout</button>
-          ]
-        
-        }
-        
+          : <Greeting username={user.username} onLogout={this.logout.bind(this)}/>
+        }   
       </div>
     )
   }
